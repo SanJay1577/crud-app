@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Base from './Base/Base';
+import { StudentDetails } from './Components/Students';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <Base
+    title = "Batch Details"
+    description= "All students details"
+    >
+      <StudentDetails/>
+      
+    </Base>
+    
+      
     </div>
   );
 }
 
 export default App;
+
+//////////////////////
+// crud
+// props drlling 
+// hooks (usestate and useeffects)
+// prop child to parent 
+// routings 
+// buttons 
+// unauthoried re routings 
+// material ui
+//////////////////////////////
