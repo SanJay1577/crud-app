@@ -12,12 +12,14 @@ import { data } from "../Data/data";
 export function StudentDetails() {
   /// seeting the states
   const [studentsData, setStudents] = useState(data);
-
+  const [editId, setEditId] = useState("");
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [batch, setBatch] = useState("");
   const [gender, setGender] = useState("");
   const [experience, setExperience] = useState("");
+  const [showUpdate, setShowUpdate] = useState(false); 
+  const [showAdd, setShowAdd] = useState(true)
 
 // createa  a new data
   const addNewStudent = () => {
@@ -29,12 +31,69 @@ export function StudentDetails() {
         yearsOfExperience : experience
     }
    setStudents([...studentsData, newStudent])
+   setId("")
+   setName("")
+   setBatch("")
+   setGender("")
+   setExperience("")
   };
+
+  //delete a new data
+  const deleteStudentData = (studID) =>{
+   const selectedStudents = studentsData.filter((stud)=> stud.id !== studID);
+   setStudents(selectedStudents); 
+  }
+
+  // update functionality 
+
+   // update the form 
+
+   const editandSelectStudent = (idx) => {  
+       setShowAdd(false);
+       setShowUpdate(true);
+       setEditId(idx);
+       const selectedData = studentsData.find(stud => stud.id === idx); 
+       setId(selectedData.id);
+       setName(selectedData.name); 
+       setBatch(selectedData.batch);
+       setGender(selectedData.gender);
+       setExperience(selectedData.yearsOfExperience);
+   }
+
+
+  const updateStudentData = () => {
+    // select and find our student 
+    const editStudentIndex = studentsData.findIndex((stud) => stud.id === editId);
+
+    // we need the updated object
+     const updatedObj = {
+       id,
+       name,
+       batch,
+       gender,
+       yearsOfExperience : experience
+     }
+
+    // change the updated object in the specific array of data
+      studentsData[editStudentIndex] = updatedObj;
+    //set the students data, 
+     setStudents([...studentsData])
+     setId("")
+     setName("")
+     setBatch("")
+     setGender("")
+     setExperience("")
+     setShowAdd(!showAdd);
+     setShowUpdate(!showUpdate);
+  }
 
   return (
     <div className="containers">
-      <div className="input-section">
+      
 
+      <div className="input-section">
+     
+        
         <TextField 
         fullWidth label="Enter the id" 
         onChange={(event)=>setId(event.target.value)}
@@ -68,7 +127,7 @@ export function StudentDetails() {
         onChange={(event)=>setExperience(event.target.value)}
         value = {experience}
          id="fullWidth" />
-
+      {showAdd ?
         <Button
           className="add-btn"
           color="success"
@@ -77,8 +136,20 @@ export function StudentDetails() {
         >
           Add Data
         </Button>
-      </div>
+        : ""}
 
+        {showUpdate ? 
+        <Button
+          className="add-btn"
+          color="secondary"
+          variant="contained"
+          onClick={updateStudentData}
+        >
+          Update Data
+        </Button>
+        :""}
+
+      </div>
       <div className="card-containers">
         {studentsData.map((stud, id) => (
           <Card sx={{ maxWidth: 345 }} key={stud.id} className="card">
@@ -97,8 +168,10 @@ export function StudentDetails() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button color="secondary">Edit</Button>
-              <Button color="error">Delete</Button>
+              <Button 
+              onClick={() => editandSelectStudent(stud.id)}
+               color="secondary">Edit</Button>
+              <Button onClick={()=>deleteStudentData(stud.id)} color="error">Delete</Button>
             </CardActions>
           </Card>
         ))}

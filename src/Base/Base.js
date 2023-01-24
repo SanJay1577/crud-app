@@ -1,6 +1,8 @@
 
 import React from 'react'
 
+const element = <h1>hi</h1>
+
 function Base ({title, description, children}) {
     return (
         <div className='main-component'>
@@ -22,3 +24,4 @@ function Base ({title, description, children}) {
 export default Base
 
 
+// difference between jsx and component 
