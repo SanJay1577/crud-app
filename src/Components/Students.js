@@ -7,11 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Base from "../Base/Base";
 import { data } from "../Data/data";
 
-export function StudentDetails() {
+export function StudentDetails({studentsData, setStudents}) {
   /// seeting the states
-  const [studentsData, setStudents] = useState(data);
   const [editId, setEditId] = useState("");
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -20,6 +21,7 @@ export function StudentDetails() {
   const [experience, setExperience] = useState("");
   const [showUpdate, setShowUpdate] = useState(false); 
   const [showAdd, setShowAdd] = useState(true)
+  const history = useHistory();
 
 // createa  a new data
   const addNewStudent = () => {
@@ -88,6 +90,10 @@ export function StudentDetails() {
   }
 
   return (
+    <Base
+    title = "Batch Details"
+    description= "All students details"
+    >
     <div className="containers">
       
 
@@ -172,11 +178,13 @@ export function StudentDetails() {
               onClick={() => editandSelectStudent(stud.id)}
                color="secondary">Edit</Button>
               <Button onClick={()=>deleteStudentData(stud.id)} color="error">Delete</Button>
+              <Button onClick={()=>history.push(`/student/${id}`)}>View Student</Button>
             </CardActions>
           </Card>
         ))}
       </div>
     </div>
+    </Base>
   );
 }
 

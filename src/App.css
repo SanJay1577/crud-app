@@ -1,7 +1,6 @@
 *{
   padding : 0px; 
   margin : 0px;
-
 }
 
 .main-component{
@@ -21,6 +20,7 @@
   height: 75%;
   text-align: center;
 }
+
 .children-segment{
   border: 1px solid red;
 }
