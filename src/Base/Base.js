@@ -1,6 +1,7 @@
 
 import { AppBar, Button, Toolbar } from '@mui/material'
 import React from 'react'
+
 import { useHistory } from 'react-router-dom'
 
 const element = <h1>hi</h1>
@@ -9,30 +10,57 @@ function Base ({title, description, children}) {
     // react navigator
     const history = useHistory();
 
+    const logoutMethod = () => {
+        localStorage.removeItem("user-name")
+        history.push("/dashboard");
+    }
+
     return (
-        <div className='main-component'>
+        <div className='main-component base-component'>
              <AppBar position='static'>
                <Toolbar variant='dense'>
                 <Button 
                 color='inherit'
                 onClick={()=>history.push("/dashboard")}>
-                DashBoard</Button>
+                 <span className="icon">🏚</span> 
+                 <span className="nav-name">DashBoard</span>
+                </Button>
 
                 <Button 
                 color='inherit' 
                 onClick={()=>history.push("/details")}>
-                    Student List</Button>
+                   <span className="icon">🏚</span> 
+                   <span className="nav-name">Student List</span>
+                   </Button>
                 <Button 
 
                 color='inherit' 
                 onClick={()=>history.push("/register")}>
-                    Login</Button>
+                 <span className="icon">🏚</span>  
+                 <span className="nav-name">Login</span> 
+                </Button>
 
                 <Button 
                 color='inherit'
                  onClick={()=>history.push("/adkjadgjsgdjs")}>
-                    Nopage</Button>
+                  <span className="icon">🏚</span>
+                  <span className="nav-name">Nopage</span> 
+                     </Button>
                     
+                     <Button 
+                color='inherit'
+                 onClick={()=>history.push("/add-data")}>
+                  <span className="icon">🏚</span>
+                  <span className="nav-name">Add Data</span> 
+                     </Button>
+
+                     <Button 
+                  color='inherit'
+                   onClick={logoutMethod}>
+                  <span className="icon">🏚</span>
+                  <span className="nav-name">Logout</span> 
+                     </Button>
+
                </Toolbar>
             </AppBar>
             <header>

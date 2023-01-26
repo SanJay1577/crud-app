@@ -1,7 +1,6 @@
 import { useState } from 'react';
+import "./App.css"
 import { Redirect, Route, Switch } from 'react-router-dom';
-
-import Base from './Base/Base';
 import AuthPage from './Components/AuthPage';
 import DashBoard from './Components/DashBoard';
 import NoPage from './Components/NoPage';
@@ -9,6 +8,8 @@ import StudentProfile from './Components/StudentProfile';
 import { StudentDetails } from './Components/Students';
 import WelcomePage from './Components/WelcomePage';
 import { data } from './Data/data';
+import AddStudents from './Components/AddStudents';
+import EditStudents from './Components/EditStudents';
 
 function App() {
   const [studentsData, setStudents] = useState(data);
@@ -43,6 +44,20 @@ function App() {
         <StudentProfile studentsData={studentsData} />
       </Route>
 
+      
+      <Route path = "/add-data">
+        <AddStudents
+        studentsData={studentsData} 
+        setStudents= {setStudents}
+        />
+      </Route>
+
+      <Route path = "/edit/:id">
+        <EditStudents 
+        studentsData={studentsData}
+        setStudents= {setStudents} />
+      </Route>
+
       <Route path = "**">
         <NoPage/>
       </Route>
@@ -72,15 +87,3 @@ export default App;
 // material ui done
 //////////////////////////////
 
-
-{/* <Base
-    title = "Batch Details"
-    description= "All students details"
-    >
-      <StudentDetails/>
-      
-    </Base>
-
-    <DashBoard/>
-
-    <AuthPage/> */}
