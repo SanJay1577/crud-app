@@ -4,12 +4,27 @@ import { useHistory } from 'react-router-dom'
 import Base from '../Base/Base'
 
 const AddStudents = ({studentsData, setStudents}) => {
+  
+  const [values, setValues] = useState({
+    id:"",
+    name : "",
+    batch :"",
+    gender :"",
+    experience : ""
+  }); 
+  const {
+      id,
+     name,
+     batch, 
+     gender, 
+     experience} = values; 
     const history = useHistory();
-    const [name, setName] = useState("");
-    const [batch, setBatch] = useState("");
-    const [id, setId] = useState("");
-    const [gender, setGender] = useState("");
-    const [experience, setExperience] = useState("");
+
+// Single handle change event
+const handleChange = (name) => (event) =>{
+   const value = event.target.value; 
+   setValues({...values, [name]:value})
+}
 
     const addNewStudent = () => {
         const newStudent = {
@@ -20,11 +35,14 @@ const AddStudents = ({studentsData, setStudents}) => {
             yearsOfExperience : experience
         }
        setStudents([...studentsData, newStudent])
-       setId("")
-       setName("")
-       setBatch("")
-       setGender("")
-       setExperience("")
+       setValues({
+        ...values, 
+        id:"",
+        name:"",
+        batch:"", 
+        gender:"", 
+        experience:""
+       })
        history.push("/details")
       };
 
@@ -39,36 +57,41 @@ const AddStudents = ({studentsData, setStudents}) => {
         
      <TextField 
      fullWidth label="Enter the id" 
-     onChange={(event)=>setId(event.target.value)}
+     onChange={handleChange("id")}
      value = {id}
+     name= "id"
      id="fullWidth" />
 
      <TextField 
      fullWidth 
      label="Enter the Name"
-     onChange={(event)=>setName(event.target.value)}
+     onChange={handleChange("name")}
      value= {name}
+     name= "name"
       id="fullWidth" />
 
      <TextField 
      fullWidth 
      label="Enter the Batch"
-     onChange={(event)=>setBatch(event.target.value)}
+     onChange={handleChange("batch")}
      value = {batch}
+     name= "batch"
       id="fullWidth" />
 
      <TextField 
      fullWidth 
      label="Enter the Gender"
-     onChange={(event)=>setGender(event.target.value)}
+     onChange={handleChange("gender")}
      value = {gender}
+     name= "gender"
       id="fullWidth" />
 
      <TextField 
      fullWidth 
      label="Enter the Experience"
-     onChange={(event)=>setExperience(event.target.value)}
+     onChange={handleChange("experience")}
      value = {experience}
+     name="experience"
       id="fullWidth" />
  
      <Button

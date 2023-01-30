@@ -47,7 +47,7 @@ function Base ({title, description, children}) {
                   <span className="icon">🏚</span>
                   <span className="nav-name">Add Data</span> 
                      </Button>
-
+                     
                      <Button 
                   color='inherit'
                    onClick={logoutMethod}>
