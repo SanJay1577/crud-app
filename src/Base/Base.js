@@ -40,13 +40,6 @@ function Base ({title, description, children}) {
                  <span className="icon">🏚</span>  
                  <span className="nav-name">Login</span> 
                 </Button>
-
-                <Button 
-                color='inherit'
-                 onClick={()=>history.push("/adkjadgjsgdjs")}>
-                  <span className="icon">🏚</span>
-                  <span className="nav-name">Nopage</span> 
-                     </Button>
                     
                      <Button 
                 color='inherit'
