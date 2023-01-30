@@ -40,7 +40,7 @@ if (!localStorage.getItem("user-name")){
               <Typography gutterBottom variant="h5" component="div">
                 Name : {stud.name}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              {/* <Typography variant="body2" color="text.secondary">
                 Batch : {stud.batch}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -48,7 +48,7 @@ if (!localStorage.getItem("user-name")){
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Experience : {stud.yearsOfExperience} years
-              </Typography>
+              </Typography> */}
             </CardContent>
             <CardActions>
               <Button 

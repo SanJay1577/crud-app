@@ -42,3 +42,16 @@
 .icon{
  display: none;
 }
+
+@media only screen and (min-width : 325px) and (max-width : 450px) {
+   .icon {
+      display: block;
+   }
+   .nav-name{
+    display: none;
+   }
+   
+ 
+
+
+}

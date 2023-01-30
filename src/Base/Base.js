@@ -17,6 +17,7 @@ function Base ({title, description, children}) {
 
     return (
         <div className='main-component base-component'>
+
              <AppBar position='static'>
                <Toolbar variant='dense'>
                 <Button 

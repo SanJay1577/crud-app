@@ -6,7 +6,7 @@ import Base from '../Base/Base';
 const EditStudents = ({studentsData,setStudents}) => {
     const history = useHistory();
     const {id} = useParams();
-    const student = studentsData[id]
+    const student = studentsData[id] 
     const [editId, setEditId] = useState("");
     const [name, setName] = useState("");
     const [batch, setBatch] = useState("");
@@ -15,7 +15,7 @@ const EditStudents = ({studentsData,setStudents}) => {
     const [experience, setExperience] = useState("");
 // initial things and mountings happening
        useEffect(() => {
-        setEditId(student.id);
+         setEditId(student.id);
          setIdx(student.id); 
          setName(student.name);
          setBatch(student.batch);
